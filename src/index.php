@@ -1,76 +1,74 @@
 <?php
-//    $hostname = 'localhost';
-//    $username = 'root';
-//    $password = '1234';
-//    $database = 'abakarov_test';
-//
-//    $link = mysqli_connect($hostname, $username, $password, $database);
-//    mysqli_query($link, "SET NAMES 'utf8'");
-//
-//    $query = 'SElECT name, age FROM user_test';
-//
-//    $res = mysqli_query($link, $query);
-//
-//$data = [];
-//
-//$t = mysqli_fetch_assoc($res);
-//$data[] = $t;
-//
-//$t = mysqli_fetch_assoc($res);
-//$data[] = $t;
-//
-//$t = mysqli_fetch_assoc($res);
-//$data[] = $t;
-//
-//
-//$t = mysqli_fetch_assoc($res);
-//$data[] = $t;
-//
-//
-//
-//
-////var_dump($data);
-//
-//foreach ($data as $elem) {
-////    echo $elem["name"] . ' ' . $elem["age"] ."\n";
-//    foreach ($elem as $item) {
-//        echo $item .PHP_EOL;
-//    }
-//}
+
+    $connection = mysqli_connect('mysql', 'root', 'root', 'PHP');
+
+    if (!empty($_POST['name']) and !empty($_POST['password']) and !empty($_POST['password_check'])){
+        if ($_POST['password'] == $_POST['password_check']) {
+            $name = $_POST['name'];
+            $password = $_POST['password'];
+            $sql = "INSERT INTO users (LastName, FirstName) VALUES ('$name','$password')";
+            $connection->query($sql);
+            echo "Вы авторизованны";
 
 
+//            $sql_fech = "SELECT * FROM users WHERE LastName=$_POST[name] AND FirstName=$_POST[password]";
+//            $result = $connection->query($sql_fech);
+
+//            if (!empty($result->fetch_assoc())) {
+//                echo "Вы авторизованны";
+//            }
+
+        }else{
+            echo "Пароли не совподают";
+        }
+    }else{
+        echo 'Вы не ввели данные';
+    }
+?>
+
+<?php
 
 
-//$hostname = 'localhost';
-//$username = 'root';
-//$password = '1234';
-//$database = 'abakarov_test';
+    if (!empty($_POST['name_s']) and !empty($_POST['password_s'])){
+        if ($_POST['password'] == $_POST['password_check']) {
+            $name_s = $_POST['name_s'];
+            $password_s = $_POST['password_s'];
+            $sql = "SELECT * FROM users WHERE LastName=$name_s AND FirstName=$password_s ";
+            $connection->query($sql);
 
-//$link = mysqli_connect($hostname, $username, $password, $database);
-//$query = 'SElECT name, age FROM user_test';
-//$add = "INSERT INTO user_test (name, age, birthday) VALUES ('Джексон','13','2010-01-01')";
-//$update = "UPDATE user_test SET age=40 WHERE age = 13";
-//$delete = "DELETE FROM user_test WHERE name='Джексон'";
-//$q = "SELECT * FROM user_test LIMIT 1,2";
-//$res = mysqli_query($link, $q);
 
+    //            $sql_fech = "SELECT * FROM users WHERE LastName=$_POST[name] AND FirstName=$_POST[password]";
+    //            $result = $connection->query($sql_fech);
+
+    //            if (!empty($result->fetch_assoc())) {
+    //                echo "Вы авторизованны";
+    //            }
+
+        }else{
+            echo "Пароли не совподают";
+        }
+    }else{
+        echo 'Вы не ввели данные';
+    }
+
+?>
+
+//    $connection = mysqli_connect('mysql', 'root', 'root', 'PHP' );
+
+//    $connection->query('CREATE TABLE users(
+//        PersonID int,
+//        LastName varchar(255),
+//        FirstName varchar(255))');
+
+//    $sql_q = "SELECT * FROM users";
+//    $sql = "INSERT INTO users (LastName, FirstName) VALUES ('Гаджимурад', 'Абакаров')";
 //
-//$row = mysqli_fetch_assoc($res);
-//var_dump($row);
-//
-//$row = mysqli_fetch_assoc($res);
-//var_dump($row);
-//
-//$row = mysqli_fetch_assoc($res);
-//var_dump($row);
+//    $res = $connection->query($sql_q);
+//    var_dump($res->fetch_assoc());
 
 
-
-
-
-
-$connection = mysqli_connect('mysql', 'root', 'root');
-
+//    $result = $connection->query($sql);
+//    var_dump($result->fetch_assoc());
 
 
 
