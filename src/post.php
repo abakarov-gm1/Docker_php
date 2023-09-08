@@ -40,7 +40,7 @@
             <input type="password" name="password_s">
         </div>
         <br/>
-        <input type="submit" />
+        <input type="submit"/>
     </div>
 
 </form>
