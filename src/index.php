@@ -2,16 +2,17 @@
 session_start();
     
     $connection = mysqli_connect('mysql', 'root', 'root', 'PHP');
+    $select = "SELECT * FROM users";
+    $res = $connection->query($select);
+    var_dump($res->fetch_assoc());
 
     if (!empty($_POST['name']) and !empty($_POST['password']) and !empty($_POST['password_check'])){
         if ($_POST['password'] == $_POST['password_check']) {
             $name = $_POST['name'];
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
             $sql = "INSERT INTO users (LastName, FirstName, salt) VALUES ('$name','$password', '')";
             $connection->query($sql);
             echo "Вы авторизованны";
-
         }else{
             echo "Пароли не совподают";
         }
